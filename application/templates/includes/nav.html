@@ -1,0 +1,5 @@
+{% if session.get('username') %}
+<h3><a href= {{url_for('group')}}>Home</a> <a href= {{url_for('logout')}}>Logout</a></h3>
+{% else %}
+<h3><a href= {{url_for('home')}}>Home</a> <a href= {{url_for('login')}}>Login</a></h3>
+{% endif %}

@@ -1,0 +1,36 @@
+{% include "includes/nav.html" %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{category}}">
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+<form name="login" action="" method="post" novalidate>
+    <fieldset class="form-group">
+        <legend>{{title}}</legend> 
+        {{ form.hidden_tag() }}
+
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=35) }}
+            {% for error in form.email.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=15) }}
+            {% for error in form.password.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.submit() }}
+        </p>
+    </fieldset>
+</form>
