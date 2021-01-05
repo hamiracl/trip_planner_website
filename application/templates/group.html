@@ -1,3 +1,31 @@
 {% include "includes/nav.html" %}
-
-<h1>Here will be the groups, work in progress</h1>
+<h1><a href = {{url_for('create_group')}}>Create a Group</a>    <a href = {{url_for('join_group')}}>Join a Group</a></h1>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for category, message in messages %}
+        <div class="alert alert-{{category}}">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+<div>
+    <table>
+    <thead>
+        <tr>
+            <th scope="col">Group ID</th>
+            <th scope="col">Group Name</th>
+            <th scope="col">Admin</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for room in roomData %}
+        <tr>
+            <td>{{room.id}}</td>
+            <td>{{room.name}}</td>
+            <td>{{room.admin}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>  
