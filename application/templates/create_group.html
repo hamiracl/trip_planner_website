@@ -1,0 +1,18 @@
+{% include "includes/nav.html" %}
+
+<form name="group" action="" method="post" novalidate>
+    <fieldset class="form-group">
+        <legend>Create a Group</legend>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=100) }}
+            {% for error in form.name.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+    </fieldset>
+</form>
